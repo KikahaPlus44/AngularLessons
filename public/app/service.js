@@ -9,7 +9,7 @@ angular.module('services', [])
     this.options = {
         urlUsers : domain + 'users/',
         urlUser : function (id) {
-            return domain + 'user/' + id + '/';
+            return domain + 'users/' + id + '/';
         }
     };
 });
