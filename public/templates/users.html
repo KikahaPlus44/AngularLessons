@@ -1,0 +1,39 @@
+<section class="section ">
+    <div class="container">
+        <div>
+            <label for="all"> All</label>
+            <input type="text" ng-model="search.$" id="all">
+            <label for="name"> name</label>
+            <input type="text" ng-model="search.name" id="name">
+            <label for="email"> email</label>
+            <input type="text" ng-model="search.email" id="email">
+            <button class="btn btn-default">Add user</button>
+            <table class="table table-hover table-bordered table-striped">
+                <thead>
+                        <tr>    
+                            <th>#</th>
+                            <th>name</th>
+                            <th>Nick name</th>
+                            <th>E-mail</th>
+                            <th>Action</th>
+
+                        </tr>
+                </thead>
+                <tbody>
+                    <!--<tr ng-repeat="user in users | limitTo: 5">-->
+                    <!--<tr ng-repeat="user in users | orderBy: 'name'">-->
+                    <tr ng-repeat="user in users | filter: search" ng-click="userInfo(user.id)">
+                    <!--<tr ng-repeat="user in users">-->
+                        <td>{{$index + 1}}</td>
+                        <td>
+                            <a ui-sref="app.user({id: {{user.id}}})">{{user.name | filterName : true}}</a>
+                        </td>
+                        <td>{{user.username}}</td>
+                        <td>{{user.email}}</td>
+                        <td><a href="">edit</a> <a href="">del</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div><!-- container -->
+</section>
