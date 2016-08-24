@@ -6,21 +6,22 @@
 angular.module('factory', []).
 factory('userRestApiFacrtory', function($http, generalItem){
     return {
-        getUser: function() {
+        getUsers: function() {
             return $http({
                 metod: "GET",
                 url: generalItem.options.urlUsers,
                 headers: {
                     'Content-Type': 'aplication.json; charset=utf-8'
-                },
-                getUser : function (id){
-                    return $http ({
-                        metod: "GET",
-                        url: generalItem.options.urlUser(id),
-                        headers: {
-                            'Content-Type': 'aplication.json; charset=utf-8'
-                        }
-                    });
+                }
+                
+            });
+        },
+        getUser : function (id){
+            return $http ({
+                metod: "GET",
+                url: generalItem.options.urlUser(id),
+                headers: {
+                    'Content-Type': 'aplication.json; charset=utf-8'
                 }
             });
         }

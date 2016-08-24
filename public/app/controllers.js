@@ -1,5 +1,5 @@
-angular.module('controllers', []).
-controller('MainCtrl', function(){
+angular.module('controllers', [])
+.controller('MainCtrl', function(){
     console.log('MainCtrl');
 
 })
@@ -8,8 +8,7 @@ controller('MainCtrl', function(){
 })
 .controller('UsersCtrl',function($scope, userRestApiFacrtory, $state){
     $scope.users = [];
-    console.log('UsersCtrl');
-    userRestApiFacrtory.getUser().
+    userRestApiFacrtory.getUsers().
     success(function(data, status, headers, config){
         //        var token = headers('http-token');
         $scope.users = data;
@@ -25,7 +24,15 @@ controller('MainCtrl', function(){
     };
  })
  .controller('UserCtrl', function($scope, userRestApiFacrtory, $stateParams){
-    userRestApiFacrtory.getUser($stateParams.id);
+    $scope.user = [];
+    userRestApiFacrtory.getUser($stateParams.id).
+    success(function(data, status, headers, config){
+        $scope.user = data;
+        console.log($scope.user);
+    })
+    .error(function(data){
+        console.log(data);
+    });
 });
 
 
