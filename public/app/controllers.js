@@ -1,4 +1,6 @@
 angular.module('controllers', [])
+// Описываем различные контроллеры, зачем так много пока не ясно но пусть будут
+// MainCtrl поключаем в индекс остальные подключаются по ходу дела в app.js
 .controller('MainCtrl', function(){
     console.log('MainCtrl');
 
@@ -6,9 +8,15 @@ angular.module('controllers', [])
 .controller('AppBodyCtrl', function(){
     console.log('AppBodyCtrl');
 })
+// В UsersCtrl переадем $scope потому что надо так,
+// userRestApiFacrtory это наша фабрика которая формирует GET запрос к серверу 
+// $state не очень ясно зачем возможно данные из app.js
 .controller('UsersCtrl',function($scope, userRestApiFacrtory, $state){
+    // создаем обьект users в $scope чтобы передать туда наш ответ с сервера
     $scope.users = [];
+    // Собственно передаем ответ из фабрики в scope.users
     userRestApiFacrtory.getUsers().
+    // Сервер вернул то что попросили
     success(function(data, status, headers, config){
         //        var token = headers('http-token');
         $scope.users = data;
@@ -16,14 +24,19 @@ angular.module('controllers', [])
         //clasic filter        
         //$scope.users = $filter('oderBy')(users, {'name' : search})
     }).
+    // сервер вернул какую-то ошибку 
     error(function(data){
         console.log(data);
     });
+    // это какято часть нашего ui-rout вызывается ng-click по строке с юзером
+    // получает оттуда же id кликнутого юзера и отправляет на новый view  
     $scope.userInfo = function(id){
         $state.go('app.user', {id:id});
     };
- })
- .controller('UserCtrl', function($scope, userRestApiFacrtory, $stateParams){
+})
+// в этом контроллере мы получаем обьект с данными юзера что за $stateParams вообще не ясно
+// но в целом так же как и UsersCtrl 
+.controller('UserCtrl', function($scope, userRestApiFacrtory, $stateParams){
     $scope.user = [];
     userRestApiFacrtory.getUser($stateParams.id).
     success(function(data, status, headers, config){
