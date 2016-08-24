@@ -28,13 +28,14 @@ angular.module('controllers', [])
     error(function(data){
         console.log(data);
     });
-    // это какято часть нашего ui-rout вызывается ng-click по строке с юзером
+    // это ui-rout вызывается ng-click по строке с юзером
     // получает оттуда же id кликнутого юзера и отправляет на новый view  
     $scope.userInfo = function(id){
         $state.go('app.user', {id:id});
     };
 })
-// в этом контроллере мы получаем обьект с данными юзера что за $stateParams вообще не ясно
+// в этом контроллере мы получаем обьект с данными юзера
+// $stateParams встроенный метод для получения параметров нашего $state (конкретно тут id)
 // но в целом так же как и UsersCtrl 
 .controller('UserCtrl', function($scope, userRestApiFacrtory, $stateParams){
     $scope.user = [];

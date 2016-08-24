@@ -4,9 +4,11 @@
                 <th>#</th>
                 <th>name</th>
                 <th>Nick name</th>
+                <th>Phone</th>
                 <th>E-mail</th>
-                <th>Action</th>
-
+                <th>Address</th>
+                <th>Websitel</th>
+                
             </tr>
     </thead>
     <tbody>
@@ -17,8 +19,10 @@
                 {{user.name}}
             </td>
             <td>{{user.username}}</td>
+            <td>{{user.phone}}</td>
             <td>{{user.email}}</td>
-            <td><a href="">edit</a> <a href="">del</a></td>
+            <td>{{user.address.street}}, {{user.address.zipcode}}</td>
+            <td>{{user.website}}</td>
         </tr>
     </tbody>
 </table>

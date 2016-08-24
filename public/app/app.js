@@ -23,5 +23,4 @@ app.config(function($stateProvider, $urlRouterProvider){
         controller: 'UserCtrl'
     });
 });
-console.log('ololo');
 
