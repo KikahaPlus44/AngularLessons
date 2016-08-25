@@ -1,3 +1,18 @@
-span {
-    color: red !important;
+.data-table {
+    margin-top: 20px;
+    
+}
+.data-table__sort {
+    display: block;
+    width: 100%;
+    cursor: pointer;
+}
+.data-table__header {
+    position: relative;
+}
+.data-table__header span {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    margin-top: -7px;
 }

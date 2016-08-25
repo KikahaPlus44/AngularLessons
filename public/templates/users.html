@@ -1,23 +1,38 @@
 
 <label for="all"> All</label>
-<input type="text" ng-model="search.$" id="all">
-<table class="table table-hover table-bordered">
+<input type="text" ng-model="search.$" id="all" class="data-table__search">
+<table class="table table-hover table-bordered data-table">
     <thead>
             <tr>    
-                <th>#</th>
-                <th>name</th>
-                <th>Nick name</th>
-                <th>E-mail</th>
+                <th class="data-table__header">
+                    <a ng-click="sortType = 'id'; sortReverse = !sortReverse" class="data-table__sort">id</a>
+                    <span ng-show="sortType == 'id' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+                    <span ng-show="sortType == 'id' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+                </th>
+                <th class="data-table__header">
+                    <a ng-click="sortType = 'name'; sortReverse = !sortReverse" class="data-table__sort">name</a>
+                    <span ng-show="sortType == 'name' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+                    <span ng-show="sortType == 'name' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+                </th>
+                <th class="data-table__header">
+                    <a ng-click="sortType = 'username'; sortReverse = !sortReverse" class="data-table__sort">nick name</a>
+                    <span ng-show="sortType == 'username' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+                    <span ng-show="sortType == 'username' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+                </th>
+                <th class="data-table__header">
+                    <a ng-click="sortType = 'email'; sortReverse = !sortReverse" class="data-table__sort">E-mail</a>
+                    <span ng-show="sortType == 'email' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+                    <span ng-show="sortType == 'email' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+                </th>
                 <th>Action</th>
-
             </tr>
     </thead>
     <tbody>
         <!--<tr ng-repeat="user in users | limitTo: 5">-->
         <!--<tr ng-repeat="user in users | orderBy: 'name'">-->
-        <tr ng-repeat="user in users | filter: search" ng-click="userInfo(user.id)" style="cursor: pointer;">
+        <tr ng-repeat="user in users | filter: search | orderBy:sortType:sortReverse" ng-click="userInfo(user.id)" style="cursor: pointer;">
         <!--<tr ng-repeat="user in users">-->
-            <td>{{$index + 1}}</td>
+            <td>{{user.id}}</td>
             <td>
                 <a ui-sref="app.user({id: {{user.id}}})">{{user.name}}</a>
             </td>

@@ -14,8 +14,14 @@ angular.module('controllers', [])
 .controller('UsersCtrl',function($scope, userRestApiFacrtory, $state){
     // создаем обьект users в $scope чтобы передать туда наш ответ с сервера
     $scope.users = [];
+    // Пытаемся сортировать таблицу по клику на хеадер
+    $scope.sortTypeName     = 'name'; // set the default sort type
+    $scope.sortNName = 'nname';
+    $scope.sortReverse  = false;  // set the default sort order
+
     // Собственно передаем ответ из фабрики в scope.users
     userRestApiFacrtory.getUsers().
+    
     // Сервер вернул то что попросили
     success(function(data, status, headers, config){
         //        var token = headers('http-token');
@@ -24,10 +30,12 @@ angular.module('controllers', [])
         //clasic filter        
         //$scope.users = $filter('oderBy')(users, {'name' : search})
     }).
+    
     // сервер вернул какую-то ошибку 
     error(function(data){
         console.log(data);
     });
+    
     // это ui-rout вызывается ng-click по строке с юзером
     // получает оттуда же id кликнутого юзера и отправляет на новый view  
     $scope.userInfo = function(id){
