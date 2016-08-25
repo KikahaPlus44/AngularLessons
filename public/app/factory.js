@@ -18,16 +18,16 @@ factory('userRestApiFacrtory', function($http, generalItem){
                 
             });
         },
-        getUser : function (id){
-            return $http ({
-                metod: "GET",
-                // url генерится в нашем сервисе и становится сюда плюс передаем id нашего юзера
-                url: generalItem.options.urlUser(id),
-                headers: {
-                    'Content-Type': 'aplication.json; charset=utf-8'
-                }
-            });
-        }
+        // getUser : function (id){
+        //     return $http ({
+        //         metod: "GET",
+        //         // url генерится в нашем сервисе и становится сюда плюс передаем id нашего юзера
+        //         url: generalItem.options.urlUser(id),
+        //         headers: {
+        //             'Content-Type': 'aplication.json; charset=utf-8'
+        //         }
+        //     });
+        // }
     };
 });
 

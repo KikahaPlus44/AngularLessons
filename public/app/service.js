@@ -6,14 +6,14 @@
 angular.module('services', [])
 // загоняем адрес нашего REST API в перменную, для более лучшего управления проектом
 .service('generalItem', function(){
-    var domain = 'http://jsonplaceholder.typicode.com/';
+    var domain = 'http://localhost:3000/';
     this.options = {
         // тут у нас лежат юзеры
-        urlUsers : domain + 'users/',
+        urlUsers : domain + 'data/',
         // тут у нас лежит нужный юзер с нужным id получаем его чтобы наш роутер знал какого юзера открывать
-        urlUser : function (id) {
-            return domain + 'users/' + id + '/';
-        }
+        // urlUser : function (id) {
+        //     return domain + 'users/' + id + '/';
+        // }
     };
 });
         

@@ -1,28 +1,38 @@
 
 <label for="all"> All</label>
 <input type="text" ng-model="search.$" id="all" class="data-table__search">
-<table class="table table-hover table-bordered data-table">
+<table class="table table-hover table-bordered table-striped data-table">
     <thead>
             <tr>    
                 <th class="data-table__header">
-                    <a ng-click="sortType = 'id'; sortReverse = !sortReverse" class="data-table__sort">id</a>
-                    <span ng-show="sortType == 'id' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
-                    <span ng-show="sortType == 'id' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
-                </th>
-                <th class="data-table__header">
-                    <a ng-click="sortType = 'name'; sortReverse = !sortReverse" class="data-table__sort">name</a>
+                    <a ng-click="sortType = 'name'; sortReverse = !sortReverse" class="data-table__sort">Name</a>
                     <span ng-show="sortType == 'name' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
                     <span ng-show="sortType == 'name' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
                 </th>
                 <th class="data-table__header">
-                    <a ng-click="sortType = 'username'; sortReverse = !sortReverse" class="data-table__sort">nick name</a>
-                    <span ng-show="sortType == 'username' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
-                    <span ng-show="sortType == 'username' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+                    <a ng-click="sortType = 'position'; sortReverse = !sortReverse" class="data-table__sort">Position</a>
+                    <span ng-show="sortType == 'position' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+                    <span ng-show="sortType == 'position' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
                 </th>
                 <th class="data-table__header">
-                    <a ng-click="sortType = 'email'; sortReverse = !sortReverse" class="data-table__sort">E-mail</a>
-                    <span ng-show="sortType == 'email' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
-                    <span ng-show="sortType == 'email' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+                    <a ng-click="sortType = 'salary'; sortReverse = !sortReverse" class="data-table__sort">Salary</a>
+                    <span ng-show="sortType == 'salary' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+                    <span ng-show="sortType == 'salary' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+                </th>
+                <th class="data-table__header">
+                    <a ng-click="sortType = 'start_date'; sortReverse = !sortReverse" class="data-table__sort">Start Date</a>
+                    <span ng-show="sortType == 'start_date' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+                    <span ng-show="sortType == 'start_date' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+                </th>
+                <th class="data-table__header">
+                    <a ng-click="sortType = 'office'; sortReverse = !sortReverse" class="data-table__sort">Office</a>
+                    <span ng-show="sortType == 'office' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+                    <span ng-show="sortType == 'office' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+                </th>
+                <th class="data-table__header">
+                    <a ng-click="sortType = 'extn'; sortReverse = !sortReverse" class="data-table__sort">Extn</a>
+                    <span ng-show="sortType == 'extn' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+                    <span ng-show="sortType == 'extn' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
                 </th>
                 <th>Action</th>
             </tr>
@@ -30,14 +40,16 @@
     <tbody>
         <!--<tr ng-repeat="user in users | limitTo: 5">-->
         <!--<tr ng-repeat="user in users | orderBy: 'name'">-->
-        <tr ng-repeat="user in users | filter: search | orderBy:sortType:sortReverse" ng-click="userInfo(user.id)" style="cursor: pointer;">
+        <tr ng-repeat="user in data | filter: search | orderBy:sortType:sortReverse">
         <!--<tr ng-repeat="user in users">-->
-            <td>{{user.id}}</td>
+            <td>{{user.name}}</td>
             <td>
-                <a ui-sref="app.user({id: {{user.id}}})">{{user.name}}</a>
+                {{user.position}}
             </td>
-            <td>{{user.username}}</td>
-            <td>{{user.email}}</td>
+            <td>{{user.salary}}</td>
+            <td>{{user.start_date}}</td>
+            <td>{{user.office}}</td>
+            <td>{{user.extn}}</td>
             <td><a href="">edit</a> <a href="">del</a></td>
         </tr>
     </tbody>
