@@ -40,7 +40,7 @@
     <tbody>
         <!--<tr ng-repeat="user in users | limitTo: 5">-->
         <!--<tr ng-repeat="user in users | orderBy: 'name'">-->
-        <tr ng-repeat="user in data | filter: search | orderBy:sortType:sortReverse">
+        <tr dir-paginate="user in data | filter: search | orderBy:sortType:sortReverse | itemsPerPage:5">
         <!--<tr ng-repeat="user in users">-->
             <td>{{user.name}}</td>
             <td>
@@ -54,3 +54,8 @@
         </tr>
     </tbody>
 </table>
+<dir-pagination-controls
+       max-size="5"
+       direction-links="true"
+       boundary-links="true" >
+</dir-pagination-controls>

@@ -13,6 +13,7 @@ angular.module('controllers', [])
 .controller('UsersCtrl',function($scope, userRestApiFacrtory, $state){
     // создаем обьект users в $scope чтобы передать туда наш ответ с сервера
     $scope.data = [];
+    
     // Пытаемся сортировать таблицу по клику на хеадер
     $scope.sortReverse  = false;  // set the default sort order
 
