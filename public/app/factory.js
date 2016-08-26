@@ -28,6 +28,23 @@ factory('userRestApiFacrtory', function($http, generalItem){
         //         }
         //     });
         // }
+        putUsers: function(){
+            console.log("pp");
+            return $http ({
+                metod: "PATCH",
+                data: {"data": [{
+                    "name": "huy",
+                    "adress": "huy",
+                    'salary': 'pizda'
+                    }]
+                },
+                url: generalItem.options.urlUsers,
+                headers: {
+                    'Content-Type': 'aplication.json; charset=utf-8'
+                }
+            });
+
+        }
     };
 });
 

@@ -1,9 +1,22 @@
 
-<label for="all"> All</label>
-<input type="text" ng-model="search.$" id="all" class="data-table__search">
+
+<div class="row">
+    <div class="col-md-6">
+        <label for="all"> All</label>
+        <input type="text" ng-model="search.$" id="all" class="data-table__search">
+    </div><!-- col -->
+    <div class="col-md-6 text-right">
+        <a href="#" class="btn btn-success">add user</a>
+        <a href="#" class="btn btn-danger" ng-click="putData(data)">apdate date</a>
+    </div><!-- col -->
+</div><!-- row -->
+
 <table class="table table-hover table-bordered table-striped data-table">
     <thead>
-            <tr>    
+            <tr>
+                <th class="data-table__header">
+                    <i class="data-table__sort">id</i>
+                </th>   
                 <th class="data-table__header">
                     <a ng-click="sortType = 'name'; sortReverse = !sortReverse" class="data-table__sort">Name</a>
                     <span ng-show="sortType == 'name' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
@@ -40,8 +53,9 @@
     <tbody>
         <!--<tr ng-repeat="user in users | limitTo: 5">-->
         <!--<tr ng-repeat="user in users | orderBy: 'name'">-->
-        <tr dir-paginate="user in data | filter: search | orderBy:sortType:sortReverse | itemsPerPage:5">
+        <tr dir-paginate="user in data | filter: search | orderBy:sortType:sortReverse | itemsPerPage:50">
         <!--<tr ng-repeat="user in users">-->
+            <td>{{$index}}</td>
             <td>{{user.name}}</td>
             <td>
                 {{user.position}}
@@ -50,7 +64,7 @@
             <td>{{user.start_date}}</td>
             <td>{{user.office}}</td>
             <td>{{user.extn}}</td>
-            <td><a href="">edit</a> <a href="">del</a></td>
+            <td><a href="#" class="btn btn-warning">edit</a> <a class="btn btn-danger" ng-click="delUser($index)">del</a></td>
         </tr>
     </tbody>
 </table>
@@ -59,3 +73,35 @@
        direction-links="true"
        boundary-links="true" >
 </dir-pagination-controls>
+
+<form ng-submit="submit()" id='form'>
+    <legend>Form title</legend>
+
+    <div class="form-group">
+        <label for="name">name</label>
+        <input type="text" class="form-control" id="name" placeholder="name">
+    </div>
+    <div class="form-group">
+        <label for="position">position</label>
+        <input type="text" class="form-control" id="position" placeholder="position">
+    </div>
+    <div class="form-group">
+        <label for="salary">salary</label>
+        <input type="text" class="form-control" id="salary" placeholder="salary">
+    </div>
+    <div class="form-group">
+        <label for="start_date">start_date</label>
+        <input type="text" class="form-control" id="start_date" placeholder="start_date">
+    </div>
+    <div class="form-group">
+        <label for="name">office</label>
+        <input type="text" class="form-control" id="office" placeholder="office">
+    </div>
+    <div class="form-group">
+        <label for="extn">extn</label>
+        <input type="text" class="form-control" id="extn" placeholder="extn">
+    </div>
+    
+
+    <button type="submit" class="btn btn-primary js-update-form">Submit</button>
+</form>

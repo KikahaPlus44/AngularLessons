@@ -13,7 +13,7 @@ angular.module('controllers', [])
 .controller('UsersCtrl',function($scope, userRestApiFacrtory, $state){
     // создаем обьект users в $scope чтобы передать туда наш ответ с сервера
     $scope.data = [];
-    
+
     // Пытаемся сортировать таблицу по клику на хеадер
     $scope.sortReverse  = false;  // set the default sort order
 
@@ -33,7 +33,36 @@ angular.module('controllers', [])
     error(function(data){
         console.log(data);
     });
-    
+    // удаляем пользователя из обьекта
+    $scope.delUser = function($index){
+        console.log($index);
+        $scope.data.splice($index, 1);
+    };
+    $scope.putData = function(){
+        userRestApiFacrtory.putUsers()
+        .success(function(){
+            console.log("suc");
+        })
+        .error(function(){
+            console.log('hui');
+        });
+        
+        //clasic filter        
+        //$scope.users = $filter('oderBy')(users, {'name' : search})
+    };
+    $scope.submit = function() {
+        // console.log($scope.formData);
+        // $scope.data.push(this.formData);
+        addUser = {};
+        addUser.name = $('#form #name').val();
+        addUser.position =  $('#form #position').val();
+        addUser.salary =  $('#form #salary').val();
+        addUser.start_date =  $('#form #start_date').val();
+        addUser.office =  $('#form #office').val();
+        addUser.extn =  $('#form #extn').val();
+        $scope.data.push(addUser);
+        console.log($scope.data);
+    };  
     // это ui-rout вызывается ng-click по строке с юзером
     // получает оттуда же id кликнутого юзера и отправляет на новый view  
     // $scope.userInfo = function(id){
