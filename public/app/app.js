@@ -2,7 +2,8 @@ var app = angular.module('myapp', [
     'controllers',
     'factory',
     'services',
-    'ui.router'
+    'ui.router',
+    'directives'
 ]);
 app.config(function($stateProvider, $urlRouterProvider){
    $urlRouterProvider.otherwise('/app/users'),
