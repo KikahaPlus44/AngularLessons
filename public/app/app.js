@@ -3,7 +3,8 @@ var app = angular.module('myapp', [
     'factory',
     'services',
     'ui.router',
-    'directives'
+    'directives',
+    'ui.bootstrap'
 ]);
 app.config(function($stateProvider, $urlRouterProvider){
    $urlRouterProvider.otherwise('/app/users'),

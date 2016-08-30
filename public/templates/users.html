@@ -1,7 +1,18 @@
 
-<label for="all"> All</label>
-<input type="text" ng-model="search.$" id="all" class="data-table__search">
+
+<div class="row">
+    <div class="col-md-6">
+        <label for="all"> All</label>
+        <input type="text" ng-model="search.$" id="all" class="data-table__search">
+    </div><!-- col -->
+    <div class="col-md-6 text-right">
+        <button type="button" class="btn btn-default" ng-click="openUserModal()">Add new user</button>
+    </div><!-- col -->
+</div><!-- row -->
+
 <table class="table table-hover table-bordered data-table">
+
+
     <thead>
             <tr>    
                 <th class="data-table__header">

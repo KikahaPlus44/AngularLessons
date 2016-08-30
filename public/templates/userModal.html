@@ -1,0 +1,29 @@
+<form role="form" name="addNewUser" ng-submit="addUser(user)"  style="padding:20px 40px;">
+	<div class="modal-header">
+		<button type="button" class="close" aria-hidden="true" ng-click="addNewUserModal.dismiss();">&times;</button>
+		<h4 class="modal-title">Add new user</h4>
+	</div>
+	<div class="modal-body">
+		<div class="form-group">
+			<label for="name">name</label>
+			<input type="text" class="form-control" id="name" name="name" placeholder="name" ng-model="user.name" required="">
+		</div>
+		<div class="form-group">
+			<label for="email">email</label>
+			<input type="email" class="form-control" id="email" name="email" placeholder="email"  ng-model="user.email" required="">
+		</div>
+		<div class="form-group">
+			<label for="street">street</label>
+			<input type="text" class="form-control" id="street" placeholder="street"
+			name="street" ng-model="user.adress.street" required="">
+		</div>
+		<div class="city">
+			<label for="city">label</label>
+			<input type="text" class="form-control" id="city" placeholder="city" name="city" ng-model="user.adress.city" required="">
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" ng-click="addNewUserModal.dismiss('cancel');">Close</button>
+		<button type="button" class="btn btn-primary" ng-disabled="addNewUser.$invalid">Save changes</button>
+	</div>
+</form>

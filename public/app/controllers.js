@@ -11,7 +11,7 @@ angular.module('controllers', [])
 // В UsersCtrl переадем $scope потому что надо так,
 // userRestApiFacrtory это наша фабрика которая формирует GET запрос к серверу 
 // $state не очень ясно зачем возможно данные из app.js
-.controller('UsersCtrl',function($scope, userRestApiFacrtory, $state){
+.controller('UsersCtrl',function($scope, userRestApiFacrtory, $state, $uibModal){
     // создаем обьект users в $scope чтобы передать туда наш ответ с сервера
     $scope.users = [];
     // Пытаемся сортировать таблицу по клику на хеадер
@@ -43,6 +43,14 @@ angular.module('controllers', [])
     };
     $scope.onSubmit = function(formData){
         console.log(formData);
+    };
+    $scope.openUserModal = function () {
+        $scope.addNewUserModal = $uibModal.open({
+            templateUrl: '/templates/userModal.html',
+            scope: $scope,
+            size: 'lg',
+            animation: true
+        });
     };
 })
 // в этом контроллере мы получаем обьект с данными юзера
