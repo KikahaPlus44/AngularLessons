@@ -13,7 +13,6 @@ angular.module('directives', [])
 			$scope.fullname = attr.first + " " + attr.last;
 		},
 		scope: true,
-		require: last,
 		replace: true,
 		template: '<div>{{fullname}}</div>'
 	}
