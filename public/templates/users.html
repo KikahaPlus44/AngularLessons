@@ -43,6 +43,53 @@
     </tbody>
 </table>
 
-<name first="Vally" last="Pepyako"></name>
+<!-- <name first="Vally" last="Pepyako"></name>
 
-<name first="Ololo" last="Pisch pisch"></name>
+<name first="Ololo" last="Pisch pisch"></name> -->
+<!-- СОСТОЯНИЯ ФОРМЫ
+    myform.myinput.(state)
+    stats:       css
+    $pristine    ng-pristine         
+    $dirty       ng-dirty 
+    $invalid     ng-invalid
+    $valid       ng-valid
+    $submited    ng-submit
+ -->
+<style>
+input.ng-invalid.ng-dirty {
+    border: 1px solid red;
+}
+</style>
+<form role="form" name="myForm" ng-submit="onSubmit(a)">
+    <legend>Form title</legend>
+    <!-- СОСТОЯНИЯ ИМПУТА
+        myform.myinput.(state)
+        stats:        css
+        $untached     ng-untuched
+        &tached       ng-tuched
+        $pristine     ng-pristine
+        $dirty        ng-dirty
+        $invalid      ng-invalid
+        $valid        ng-valid
+     -->
+    <div class="form-group">
+        <label for="myInput">label</label>
+        <input type="email" class="form-control" id="myInput" placeholder="email" ng-model="a.email" required="" name="email">
+        <span class="danger" ng-show="myForm.myInput.$error.email">
+            not email
+        </span>
+        <span class="danger" ng-show="myForm.myInput.$error.required && myForm.myInput.$dirty">
+            emty field
+        </span>
+        
+        <label for="myInput2">label</label>
+        <input type="password" class="form-control" id="myInput2" ng-model="a.pass" required="" minlength="5" ng-maxlength="10" name="myInput2">
+        <span class="danger" ng-show="myForm.myInput2.$error.minlength">
+            коротко
+        </span>
+        <span class="danger" ng-show="myForm.myInput2.$error.maxlength">
+           длинно
+        </span>
+    </div>
+    <button type="submit" class="btn btn-primary" ng-disabled="myForm.$invalid">Submit</button>
+</form>

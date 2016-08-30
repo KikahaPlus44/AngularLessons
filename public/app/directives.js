@@ -6,7 +6,7 @@
 
 
 angular.module('directives', [])
-.directive('name', function(){
+.directive('name-1', function(){
 	return {
 		resrtict: 'E',
 		link: function($scope, elem, attr){

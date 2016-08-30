@@ -41,6 +41,9 @@ angular.module('controllers', [])
     $scope.userInfo = function(id){
         $state.go('app.user', {id:id});
     };
+    $scope.onSubmit = function(formData){
+        console.log(formData);
+    };
 })
 // в этом контроллере мы получаем обьект с данными юзера
 // $stateParams встроенный метод для получения параметров нашего $state (конкретно тут id)
