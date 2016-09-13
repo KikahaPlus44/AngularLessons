@@ -17,7 +17,21 @@ app.config(function($stateProvider, $urlRouterProvider){
     .state ('app.users',{
         url: '/users',
         templateUrl: 'templates/users.html',
-        controller: 'UsersCtrl'
+        controller: 'UsersCtrl',
+        resolve : {
+            getUsersResolve : function ($q, userRestApiFacrtory) {
+                var defer = $q.defer();
+                userRestApiFacrtory.getUsers()
+                    .success(function(data){
+                        defer.resolve(data);
+                        console.log(data);
+                    })
+                    .error(function(data){
+                        defer.reject(data);
+                    })
+                return defer.promise;
+            }
+        }    
     })
     .state('app.user', {
         url: '/user/{id}',
@@ -25,4 +39,4 @@ app.config(function($stateProvider, $urlRouterProvider){
         controller: 'UserCtrl'
     });
 });
-
+// 

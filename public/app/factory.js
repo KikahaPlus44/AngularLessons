@@ -27,6 +27,16 @@ factory('userRestApiFacrtory', function($http, generalItem){
                     'Content-Type': 'aplication.json; charset=utf-8'
                 }
             });
+        },
+        setUser : function (user){
+            return $http({
+                metod: "POST",
+                url: generalItem.options.urlUsers,
+                data: user
+                // headers: {
+                //     'Content-Type': 'aplication.json; charset=utf-8'
+                // }
+            });
         }
     };
 });

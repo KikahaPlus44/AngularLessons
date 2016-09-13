@@ -41,19 +41,37 @@
     <tbody>
         <!--<tr ng-repeat="user in users | limitTo: 5">-->
         <!--<tr ng-repeat="user in users | orderBy: 'name'">-->
-        <tr ng-repeat="user in users | filter: search | orderBy:sortType:sortReverse" ng-click="userInfo(user.id)" style="cursor: pointer;">
+        <tr ng-repeat="user in users | filter: search | orderBy:sortType:sortReverse"  style="cursor: pointer;">
         <!--<tr ng-repeat="user in users">-->
-            <td>{{user.id}}</td>
+            <td ng-click="userInfo(user.id)">{{user.name}}</td>
             <td>
-                <a ui-sref="app.user({id: {{user.id}}})">{{user.name}}</a>
+                <!-- <a ui-sref="app.user({id: {{user.id}}})">{{user.name}}</a> -->
+                {{user.name}}
             </td>
             <td>{{user.username}}</td>
             <td>{{user.email}}</td>
-            <td><a href="">edit</a> <a href="">del</a></td>
+            <td><a href="">edit</a> <a ng-click="deleteUser(user.id, $index)">del</a></td>
+            
         </tr>
     </tbody>
 </table>
 
+<h1>{{jigurda}}</h1>
+<h1>{{jigurda2}}</h1>  
+<h1>{{jigurdaOlolo}}</h1>
+
+<input type="text" ng-model="name">
+
+<div ng-switch on="name">
+    <div class="animate-switch" ng-switch-when="pizda">Джигуржа</div>
+    <div class="animate-switch" ng-switch-when="Рельсы">Шпалы</div>
+    <div class="animate-switch" ng-switch-when="Поезд">Хуёезд</div>
+    <div class="animate-switch" ng-switch-default>OLOLO!!!111</div>
+</div> 
+
+<select name="" id="" ng-model="select" ng-options="user.id as user.name for user in users">
+    <option value="">Get country</option>   
+</select>
 <!-- <name first="Vally" last="Pepyako"></name>
 
 <name first="Ololo" last="Pisch pisch"></name> -->
@@ -71,8 +89,8 @@ input.ng-invalid.ng-dirty {
     border: 1px solid red;
 }
 </style>
-<form role="form" name="myForm" ng-submit="onSubmit(a)">
-    <legend>Form title</legend>
+<!-- <form role="form" name="myForm" ng-submit="onSubmit(a)">
+    <legend>Form title</legend> -->
     <!-- СОСТОЯНИЯ ИМПУТА
         myform.myinput.(state)
         stats:        css
@@ -83,7 +101,7 @@ input.ng-invalid.ng-dirty {
         $invalid      ng-invalid
         $valid        ng-valid
      -->
-    <div class="form-group">
+<!--     <div class="form-group">
         <label for="myInput">label</label>
         <input type="email" class="form-control" id="myInput" placeholder="email" ng-model="a.email" required="" name="email">
         <span class="danger" ng-show="myForm.myInput.$error.email">
@@ -102,5 +120,7 @@ input.ng-invalid.ng-dirty {
            длинно
         </span>
     </div>
-    <button type="submit" class="btn btn-primary" ng-disabled="myForm.$invalid">Submit</button>
+    <button type="submit" class="btn btn-primary" ng-disabled="myForm.$invalid">Submit</button> -->
+
+
 </form>
